@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        .navbar{
+            min-height: 70px;
+            background-color: rgba(20, 20, 20, 0.596);
+        }
+        a{
+            color: white;
+        }     
+        a:hover{
+            color: rgb(194, 192, 192);
+        } 
+        .custom-toggler.navbar-toggler {
+            border-color: rgb(255, 255, 255);
+        }
+        .custom-toggler .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255,255)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+        }    
+    </style>
+</head>
+<body ng-app="myApp">
+    <nav class="navbar navbar-expand-lg  fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#/!">Web Apartment</a>
+            <button class="navbar-toggler custom-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#/!"><i class="fas fa-home"></i> หน้าแรก <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#!reservations"><i class="fas fa-calendar-alt"></i> จองห้องพัก</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#!activities"><i class="fas fa-street-view"></i> กิจกรรม</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#!image"><i class="far fa-images"></i> รูปภาพ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#!contact"><i class="fas fa-info-circle"></i> ติดต่อ</a>
+                    </li>
+                </ul>
+            </div>
+    </div>
+    </nav>
+    <div ng-view></div>
+    <script>
+        var app = angular.module("myApp", ["ngRoute"]);
+        app.config(function($routeProvider) {
+            $routeProvider
+            .when("/", {
+                templateUrl : "Page/main.php"
+            })
+            .when("/activities",{
+                templateUrl : "Page/Activities.php"
+            })
+            .when("/reservations",{
+                templateUrl : "Page/Reservations.php"
+            })
+            .when("/image",{
+                templateUrl : "Page/Image.php"
+            })
+            .when("/contact",{
+                templateUrl : "Page/Contact.php"
+            })
+            .otherwise({
+                redirectTo: "/"
+            });
+        });
+    </script>
+</body>
+<script>
+    $(window).scroll(function(){
+        var scroll = $(this).scrollTop();
+        if(scroll >= 100){
+            $(".navbar").css("background-color","rgba(0, 0, 0, 0.897)").css("transition","background-color 2s")
+        }else{
+            $(".navbar").css("background-color","rgba(20, 20, 20, 0.596)");
+        }
+    })
+</script>
+</html>
