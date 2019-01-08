@@ -1,4 +1,4 @@
 <?php
-     $con = mysqli_connect("localhost","root","123456789","apartment");
+     $con = mysqli_connect("XXXXXXX","XXXXXXX","XXXXXXX","apartment");
      mysqli_set_charset($con,"utf8");
 ?>
